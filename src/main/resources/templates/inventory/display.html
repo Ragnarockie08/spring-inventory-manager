@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="css" href="../../static/style.css" th:href="@{/static/style.css}">
+</head>
+<body>
+    <div class="display">
+        <h1 th:utext="${item.name}">Item name</h1>
+        <p th:utext="${item.description.getText()}"></p>
+        <p th:utext="${item.manufacturer}"></p>
+        <p th:utext="${item.category}"></p>
+        <p th:utext="${item.cost}"></p>
+        <p th:utext="${item.status}"></p>
+        <p th:utext="${item.buyingDate}"></p>
+        <p th:utext="${item.owner.toShort()}"></p>
+        <h1 th:utext="${message}">Action: </h1>
+    </div>
+
+
+    <a href="/inventory/index">Back to Home</a>
+
+</body>
+</html>

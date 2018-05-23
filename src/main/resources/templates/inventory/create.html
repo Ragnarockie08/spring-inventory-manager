@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="css" href="../../static/style.css" th:href="@{/static/style.css}">
+</head>
+<body>
+ <div class="creation">
+     <form method="post" action="/inventory/add" th:object="${inventoryForm}">
+         Product Name
+         <input type="text" th:field="*{name}"/><br/><br/>
+         Description
+         <input type="text" th:field="*{text}"/><br/><br/>
+         Manufacturer
+         <input type="text" th:field="*{manufacturer}"/><br/><br/>
+         Category
+         <input type="text" th:field="*{category}"/><br/><br/>
+         Cost
+         <input type="number" th:field="*{cost}"/><br/><br/>
+         Buying Date
+         <input type="text" th:field="*{buyingDate}"/><br/><br/>
+         Status
+         <input type="text" th:field="*{status}"/><br/><br/>
+         <table>
+             <tr>
+                 <td>Select Employee:</td>
+                 <td>
+                     <select th:field="*{owner}">
+                         <option th:each="employee : ${employees}"
+                                 th:value="${employee.id}"
+                                 th:utext="${employee.toShort()}"></option>
+                     </select>
+
+                 </td>
+             </tr>
+         </table>
+         <input type="submit" value="Save"/>
+
+     </form>
+ </div>
+
+</body>
+</html>

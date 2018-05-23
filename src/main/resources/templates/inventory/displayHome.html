@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="css" href="../../static/style.css" th:href="@{/static/style.css}">
+</head>
+<body>
+
+    <div>
+        <table class="inventory">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Manufacturer</th>
+                <th>Category</th>
+                <th>Value</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Owner</th>
+            </tr>
+            <tr th:each ="item: ${items}">
+                <td>
+                    <form action="#" th:action="@{/inventory/edit/} + ${{item.id}}" th:method="get">
+                        <button th:id="${item.id}" type="submit">
+                            <i>Edit</i>
+                        </button>
+                    </form>
+                </td>
+                <td th:utext="${item.name}">...</td>
+                <td th:utext="${item.getDescription().getText()}">...</td>
+                <td th:utext="${item.manufacturer}">...</td>
+                <td th:utext="${item.category}">...</td>
+                <td th:utext="${item.cost}">...</td>
+                <td th:utext="${item.buyingDate}">...</td>
+                <td th:utext="${item.status}">...</td>
+                <td th:utext="${item.owner.toShort()}">...</td>
+                <td>
+                    <form action="#" th:action="@{/inventory/delete/} + ${{item.id}}" th:method="delete">
+                        <button th:id="${item.id}" type="submit">
+                            <i>Delete</i>
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <form action="#" th:action="@{/inventory/index/} + ${{item.id}}" method="get">
+                        <button th:id="${item.id}" type="submit">
+                            <i>Details</i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <a href="/inventory/add">Create Item</a>
+
+</body>
+</html>
