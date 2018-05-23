@@ -29,7 +29,7 @@
                     <select name="owner" id="owner" >
                         <option th:each="employee : ${employees}"
                                 th:value="${employee.id}"
-                                th:selected="${item.owner.toShort()}"
+                                th:selected="${item.owner.id == employee.id}"
                                 th:text="${employee.toShort()}">
                         </option>
                     </select>
